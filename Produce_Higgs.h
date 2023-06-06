@@ -11,12 +11,12 @@ class PH {
   double Xsection; // total cross section
   
 public:
-  void set_values(double x, double y, double z){
+  void set_values(double x, double y, double z){ // a member function that set the parameters
     CME = x;
     BR = y;
     Xsection = z;
   }
-  // a member function which returns the fudicial cross section based on the c.m.e and the decay channel
+  // a member function which returns the fudicial cross section based on the c.m.e
   double calculateXsection() {
     return Xsection;
   }
