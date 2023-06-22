@@ -10,11 +10,7 @@ Pre-requires:
 To compile the source (in a Unix shell):
 > g++ Produce_Higgs.cc -o Produce_Higgs
 
- This command will prouce an excutable to be run
- or
-> gcc Produce_Higgs.cc -o Produce_Higgs
-
-To run the excutable:
+ This command will produce an excutable to be run, to run the program:
 > ./Produce_Higgs
 
 [1] https://twiki.cern.ch/twiki/bin/view/LHCPhysics/HiggsEuropeanStrategy
