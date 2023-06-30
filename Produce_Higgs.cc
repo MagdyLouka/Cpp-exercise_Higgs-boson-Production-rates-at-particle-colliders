@@ -3,9 +3,10 @@
 //                     Magdy Louka - May 2023
 //=============================================================================
 
-#include "Produce_Higgs.h"
+#include "Produce_Higgs.h" //source code where the class is defined
 #include <iostream>
 #include <string>
+#include <unordered_set>
 
 int main(){ //main
   std::string collider;
@@ -14,7 +15,7 @@ int main(){ //main
   std::unordered_set<int> cme_pp{8,13,14,33,40,60,80,100};
   std::unordered_set<int> cme_ee{200,220,240,250,260,280,300,320,340,360};
   std::unordered_set<std::string> decays{"bb","tt","mm","cc","gg","phph","zph","ww","zz"};
-
+  
   std::cout<<"______________________________________________________________________________ \n";
   std::cout<<"\n";
   std::cout<<" Hello :) \n";
@@ -27,19 +28,19 @@ int main(){ //main
   std::cout<<"______________________________________________________________________________\n";
   std::cout<<" The collider is: "; std::cin>>collider;
   std::cout<<"\n";
-  std::cout<<" Please choose the c.m collision energies available\n";
   if (collider!="pp" && collider!="ee") {std::cout<<" Please enter a valid collider option \n"; exit(0);}
+  std::cout<<" Please choose from the available c.m collision energies \n";
   if (collider=="pp"){
     for(auto &value: cme_pp) {std::cout << value << " / ";}
     std::cout<<" The energy is[TeV]: "; std::cin>>CME;
-    if(cme_pp.find(CME)==cme_pp.end()) {std::cout << "Collision Energy not available \n";exit(0);}
+    if(cme_pp.find(CME)==cme_pp.end()) {std::cout << "Collision Energy is not available \n";exit(0);}
   }
   if (collider=="ee"){
     for(auto &value: cme_ee) {std::cout << value << " / ";}
     std::cout<<" Energy is[GeV]: "; std::cin>>CME;
-    if(cme_ee.find(CME)==cme_ee.end()) {std::cout << "Collision Energy not available \n";exit(0);}
+    if(cme_ee.find(CME)==cme_ee.end()) {std::cout << "Collision Energy is not available \n";exit(0);}
   }
-  Collision(collider,CME); // plotting the collision
+  Collision(collider,CME); // plotting the collision sketch
   std::cout<<"________________________________________________________________________________\n";
   std::cout<<" Now let's decay the Higgs boson \n";
   std::cout<<" Please choose from the available final states:- \n";
@@ -55,13 +56,16 @@ int main(){ //main
   std::cout<<"________________________________________________________________________________\n";
   std::cout<<" Please enter the channel: "; std::cin>>decayC;
   if(decays.find(decayC)==decays.end()) {std::cout << " Please choose a valid channel \n";exit(0);}
-
+  
   Feynman_diagram(collider, decayC);   // Plotting the Feynman diagram
-
-  Higgs test;   // initiating the Higgs class object
+  
+  Higgs* myHiggs = new Higgs(collider, CME, decayC);   // initiating the Higgs class object
+  double result1 = myHiggs->Xsection; // accessing the class member through the pointer
+  double result2 = myHiggs->Xsection_BR; // accessing  class member through the pointer
+  
   std::cout<<" Results:- \n";
-  std::cout<<" The total cross-sction is: "<<test.calculateXsection(collider,CME)<<" Pb\n"; // Calling the first member function
-  std::cout<<" The cross-section x "<<decayC<<" branching ratio is: "<<test.calculateXsection_BR(collider,CME,decayC)<<" Pb\n"; // Calling the second member function
+  std::cout<<" The total cross-sction is: "<<result1<<" Pb\n";
+  std::cout<<" The cross-section * "<<decayC<<" branching ratio is: "<<result2<<" Pb\n";
   std::cout<<" Done. \n";
   return 0;
 }//end main
