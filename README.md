@@ -1,17 +1,20 @@
 # Cpp-exercise_Higgs-boson-Production-rates-at-particle-colliders
+This exercise on applying the basic pricniples of the OOP using c++ language, creating a class which encapsulate the data and methods used in calculations and allow the user to use the class through the class constructor which is the public member of the class, which is also used to pass the kinematics arguments. The class and plus two functions for simple graphics are defined in Produce_Higgs.h and the browser Macro is Produce_Higgs.cc
 
+The exercise can be used to browse the Higgs boson production rates at particle colliders, the collider type, the center of mass collision energy and the final state decay channel are used interactievly by
+the user. The cross section and the branching fractions values are taken from references [1,2] consedering certain set of assumptions, for example only the process of gluon-gluon fusion at hadronic collisions is considered which is the dominant leading process, and also consedering a certain set of Parton Distribution functions (PDF).
 
-This exercise can be used to browse the Higgs boson production rates at particle colliders, the collider type, the center of mass collision energy and the final state decay channel are used interactievly by
-the user. The cross section and the branching fractions values are taken from references [1,2] consedering certain set of assumptions, for example only the process of gluon-gluon fusion at hadronic collisions is considered which is the dominant leading process, and also consedering a certain set of Parton Distribution functions (PDF). Meanwhile the main goal of the exercise is to apply the basic priciples of OOP using c++ language, creaing two classes in the .h source file and use them in the main macro to be compiled.
+Meanwhile the main goal of the exercise is to apply the basic priciples of OOP using c++ language, creaing two classes in the .h source file and use them in the main macro to be compiled.
 
 Pre-requires:
 > gcc compiler
 
-To compile the source (in a Unix shell):
+To compile the source (in a Unix shell / Linux):
 > g++ Produce_Higgs.cc -o Produce_Higgs
 
  This command will produce an excutable to be run, to run the program:
 > ./Produce_Higgs
+
 
 [1] https://twiki.cern.ch/twiki/bin/view/LHCPhysics/HiggsEuropeanStrategy
 
